@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum UserStatus: int
 {
-    case ACTIVE = 1;
-    case INACTIVE = 0;
+    case Active = 1;
+    case Inactive = 0;
 }

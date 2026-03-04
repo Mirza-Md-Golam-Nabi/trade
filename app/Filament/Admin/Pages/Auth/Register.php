@@ -1,5 +1,5 @@
 <?php
-namespace App\Filament\User\Pages\Auth;
+namespace App\Filament\Admin\Pages\Auth;
 
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
