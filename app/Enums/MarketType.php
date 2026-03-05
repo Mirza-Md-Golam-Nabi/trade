@@ -2,18 +2,30 @@
 
 namespace App\Enums;
 
-enum MarketType: int
+use Filament\Support\Contracts\HasColor;
+use Filament\Support\Contracts\HasLabel;
+
+enum MarketType: int implements HasLabel, HasColor
 {
-    case Forex = 1;
-    case Stock = 2;
+    case Stock = 1;
+    case Forex = 2;
     case Crypto = 3;
 
-    public function label(): string
+    public function getLabel(): string
     {
         return match ($this) {
-            self::Forex => 'Forex',
             self::Stock => 'Stock',
+            self::Forex => 'Forex',
             self::Crypto => 'Crypto',
+        };
+    }
+
+    public function getColor(): string
+    {
+        return match ($this) {
+            self::Stock => 'success',
+            self::Forex => 'primary',
+            self::Crypto => 'info',
         };
     }
 }
