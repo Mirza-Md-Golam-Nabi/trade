@@ -1,10 +1,8 @@
 <?php
-
 namespace Database\Seeders;
 
 use App\Enums\UserRole;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -17,10 +15,13 @@ class UserSeeder extends Seeder
         $users = $this->users();
         foreach ($users as $user) {
             User::factory()
-            ->hasAccounts(2, function (array $attributes, User $user) {
-                return ['user_id' => $user->id];
-            })
-            ->create($user);
+                ->hasAccounts(2, function (array $attributes, User $user) {
+                    return ['user_id' => $user->id];
+                })
+                ->hasTradingAssets(5, function (array $attributes, User $user) {
+                    return ['user_id' => $user->id];
+                })
+                ->create($user);
         }
     }
 
