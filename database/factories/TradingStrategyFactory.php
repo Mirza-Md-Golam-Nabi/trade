@@ -1,7 +1,6 @@
 <?php
 namespace Database\Factories;
 
-use App\Enums\RiskLevel;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -42,10 +41,9 @@ class TradingStrategyFactory extends Factory
         $index = $this->faker->numberBetween(0, count($names) - 1);
 
         return [
-            'user_id' => User::factory(),
-            'name' => $names[$index],
+            'user_id'     => User::factory(),
+            'name'        => $names[$index],
             'description' => $descriptions[$index],
-            'risk_level' => $this->faker->randomElement(RiskLevel::cases()),
         ];
     }
 }
