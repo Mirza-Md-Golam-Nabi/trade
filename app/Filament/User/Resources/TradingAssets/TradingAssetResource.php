@@ -58,11 +58,13 @@ class TradingAssetResource extends Resource
             )
             ->columns([
                 TextColumn::make('market_type')
+                    ->label('Market Type')
                     ->badge()
                     ->sortable(),
                 TextColumn::make('symbol')
                     ->searchable(),
                 TextColumn::make('asset_name')
+                    ->label('Asset Name')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

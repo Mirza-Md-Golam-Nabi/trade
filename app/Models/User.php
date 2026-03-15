@@ -89,4 +89,9 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     {
         return $this->hasMany(TradingAsset::class);
     }
+
+    public function tradingStrategies(): HasMany
+    {
+        return $this->hasMany(TradingStrategy::class);
+    }
 }
