@@ -3,6 +3,7 @@ namespace App\Models;
 
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
+use App\Models\Trade;
 use App\Models\TradingAsset;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -93,5 +94,10 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     public function tradingStrategies(): HasMany
     {
         return $this->hasMany(TradingStrategy::class);
+    }
+
+    public function trades(): HasMany
+    {
+        return $this->hasMany(Trade::class);
     }
 }
