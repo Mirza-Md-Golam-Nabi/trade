@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Enums\Direction;
+use App\Enums\RiskLevel;
 use App\Enums\TradeStatus;
 use App\Enums\TradeType;
 use App\Enums\YesNo;
@@ -17,6 +18,8 @@ class Trade extends Model
         'account_id',
         'trading_asset_id',
         'trading_strategy_id',
+        'direction',
+        'risk_level',
         'trade_type',
         'entry_price',
         'lot_size',
@@ -32,7 +35,6 @@ class Trade extends Model
         'closed_at',
         'is_open',
         'is_closed',
-        'direction',
     ];
 
     public function casts(): array
@@ -43,6 +45,7 @@ class Trade extends Model
             'is_open'    => YesNo::class,
             'is_closed'  => YesNo::class,
             'direction'  => Direction::class,
+            'risk_level' => RiskLevel::class,
         ];
     }
 
