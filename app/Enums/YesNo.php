@@ -8,7 +8,7 @@ use Filament\Support\Contracts\HasLabel;
 enum YesNo: int implements HasLabel, HasColor
 {
     case Yes = 1;
-    case No = 0;
+    case No = 2;
 
     public function getLabel(): string
     {

@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Enums\Direction;
+use App\Enums\MarketType;
 use App\Enums\RiskLevel;
 use App\Enums\TradeStatus;
 use App\Enums\TradeType;
@@ -15,6 +16,7 @@ class Trade extends Model
 {
     protected $fillable = [
         'user_id',
+        'market_type',
         'account_id',
         'trading_asset_id',
         'trading_strategy_id',
@@ -27,25 +29,25 @@ class Trade extends Model
         'exit_price',
         'stop_loss',
         'take_profit',
+        'trade_fee',
         'profit_loss',
         'risk_percent',
         'notes',
         'status',
+        'open_close',
         'opened_at',
         'closed_at',
-        'is_open',
-        'is_closed',
     ];
 
     public function casts(): array
     {
         return [
-            'trade_type' => TradeType::class,
-            'status'     => TradeStatus::class,
-            'is_open'    => YesNo::class,
-            'is_closed'  => YesNo::class,
-            'direction'  => Direction::class,
-            'risk_level' => RiskLevel::class,
+            'market_type' => MarketType::class,
+            'trade_type'  => TradeType::class,
+            'status'      => TradeStatus::class,
+            'open_close'  => YesNo::class,
+            'direction'   => Direction::class,
+            'risk_level'  => RiskLevel::class,
         ];
     }
 
