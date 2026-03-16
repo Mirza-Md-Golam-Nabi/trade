@@ -18,7 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->string('name', 100);
             $table->unsignedTinyInteger('market_type')->default(MarketType::Stock)->index();
-            $table->decimal('initial_balance', 15, 2)->default(0)->comment('Initial balance in BDT');
+            $table->decimal('balance', 15, 2)->default(0);
+            $table->decimal('trade_fee', 15, 2)->default(0);
+            $table->unsignedTinyInteger('currency_id')->index();
             $table->string('notes', 255)->nullable();
             $table->unsignedTinyInteger('status')->default(CommonStatus::Active);
             $table->timestamps();

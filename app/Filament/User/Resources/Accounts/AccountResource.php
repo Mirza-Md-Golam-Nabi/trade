@@ -48,15 +48,24 @@ class AccountResource extends Resource
                     ->label('Brokerage House Name')
                     ->required(),
                 Select::make('market_type')
-                    ->label('Trading Type')
+                    ->label('Market Type')
                     ->options(MarketType::class)
                     ->default(MarketType::Stock)
                     ->required(),
-                TextInput::make('initial_balance')
+                TextInput::make('balance')
                     ->label('Initial Balance')
                     ->required()
                     ->numeric()
-                    ->default(0.0),
+                    ->placeholder(0.0),
+                TextInput::make('trade_fee')
+                    ->label('Trade Fee')
+                    ->required()
+                    ->numeric()
+                    ->placeholder(0.0),
+                Select::make('currency_id')
+                    ->label('Currency')
+                    ->relationship('currency', 'name')
+                    ->required(),
                 TextInput::make('notes')
                     ->label('Notes'),
                 Select::make('status')
@@ -79,8 +88,17 @@ class AccountResource extends Resource
                 TextColumn::make('market_type')
                     ->badge()
                     ->sortable(),
-                TextColumn::make('initial_balance')
-                    ->numeric()
+                TextColumn::make('balance')
+                    ->numeric(decimalPlaces: 2)
+                    ->alignRight()
+                    ->sortable(),
+                TextColumn::make('trade_fee')
+                    ->numeric(decimalPlaces: 2)
+                    ->alignRight()
+                    ->sortable(),
+                TextColumn::make('currency.code')
+                    ->label('Currency')
+                    ->alignCenter()
                     ->sortable(),
                 TextColumn::make('notes')
                     ->searchable(),
