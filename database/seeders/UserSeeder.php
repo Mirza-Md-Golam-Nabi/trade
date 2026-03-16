@@ -18,9 +18,6 @@ class UserSeeder extends Seeder
                 ->hasAccounts(2, function (array $attributes, User $user) {
                     return ['user_id' => $user->id];
                 })
-                ->hasTradingAssets(5, function (array $attributes, User $user) {
-                    return ['user_id' => $user->id];
-                })
                 ->hasTradingStrategies(3, function (array $attributes, User $user) {
                     return ['user_id' => $user->id];
                 })
