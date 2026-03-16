@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('currencies', function (Blueprint $table) {
-            $table->id();
+            $table->tinyIncrements('id');
             $table->string('name', 50);
             $table->string('code', 8)->nullable();
             $table->string('symbol', 8);

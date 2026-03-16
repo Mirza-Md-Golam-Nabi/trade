@@ -2,7 +2,9 @@
 namespace App\Models;
 
 use App\Enums\CommonStatus;
+use App\Models\Account;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Currency extends Model
 {
@@ -15,5 +17,10 @@ class Currency extends Model
         return [
             'status' => CommonStatus::class,
         ];
+    }
+
+    public function accounts(): HasMany
+    {
+        return $this->hasMany(Account::class);
     }
 }
