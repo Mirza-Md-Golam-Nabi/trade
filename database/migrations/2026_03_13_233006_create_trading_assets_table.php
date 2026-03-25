@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\MarketType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('trading_assets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedTinyInteger('market_type')->default(MarketType::Stock)->index();
+            $table->unsignedBigInteger('user_id')->index()->nullable();
+            $table->unsignedTinyInteger('market_type')->index();
             $table->string('symbol', 50);
             $table->string('asset_name', 255)->nullable();
+            $table->string('asset_icon', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

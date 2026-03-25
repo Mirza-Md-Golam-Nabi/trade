@@ -10,6 +10,7 @@ class TradingAsset extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'user_id',
         'market_type',
         'symbol',
         'asset_name',
