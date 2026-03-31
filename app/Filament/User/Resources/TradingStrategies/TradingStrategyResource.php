@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Filament\User\Resources\TradingStrategies;
 
-use App\Enums\RiskLevel;
 use App\Filament\User\Resources\TradingStrategies\Pages\ManageTradingStrategies;
 use App\Models\TradingStrategy;
 use BackedEnum;
@@ -13,7 +13,6 @@ use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreAction;
 use Filament\Actions\RestoreBulkAction;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
@@ -42,9 +41,6 @@ class TradingStrategyResource extends Resource
                 Textarea::make('description')
                     ->columnSpanFull()
                     ->required(),
-                Select::make('risk_level')
-                    ->options(RiskLevel::class)
-                    ->default(RiskLevel::Low),
             ]);
     }
 
@@ -54,16 +50,16 @@ class TradingStrategyResource extends Resource
             ->recordTitleAttribute('name')
             ->recordAction(null)
             ->modifyQueryUsing(
-                fn(Builder $query) => $query
+                fn (Builder $query) => $query
                     ->where('user_id', auth()->id())
                     ->orderBy('name', 'asc')
             )
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('risk_level')
-                    ->badge()
-                    ->searchable(),
+                TextColumn::make('description')
+                    ->limit(50)
+                    ->tooltip(fn ($state) => $state),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

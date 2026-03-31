@@ -1,9 +1,9 @@
 <?php
+
 namespace App\Models;
 
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
-use App\Models\Trade;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail, FilamentUser
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -50,9 +50,9 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     {
         return [
             'email_verified_at' => 'datetime',
-            'password'          => 'hashed',
-            'status'            => UserStatus::class,
-            'role'              => UserRole::class,
+            'password' => 'hashed',
+            'status' => UserStatus::class,
+            'role' => UserRole::class,
         ];
     }
 
@@ -65,7 +65,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     {
         return match ($panel->getId()) {
             'admin' => $this->isAdmin(),
-            'user'  => $this->isUser(),
+            'user' => $this->isUser(),
             default => false,
         };
     }
@@ -83,6 +83,11 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     public function isUser(): bool
     {
         return $this->role === UserRole::User;
+    }
+
+    public function tradingAssets(): HasMany
+    {
+        return $this->hasMany(TradingAsset::class);
     }
 
     public function tradingStrategies(): HasMany

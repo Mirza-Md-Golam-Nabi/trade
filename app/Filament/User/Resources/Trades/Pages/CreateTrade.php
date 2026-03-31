@@ -1,23 +1,26 @@
 <?php
-
 namespace App\Filament\User\Resources\Trades\Pages;
 
-use App\Enums\TradeStatus;
-use App\Enums\YesNo;
 use App\Filament\User\Resources\Trades\TradeResource;
+use App\Services\TradeService;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\ValidationException;
 
 class CreateTrade extends CreateRecord
 {
     protected static string $resource = TradeResource::class;
 
-    protected function mutateFormDataBeforeCreate(array $data): array
-    {
-        $data['user_id'] = auth()->id();
-        $data['status'] = TradeStatus::Open;
-        $data['opened_at'] = now();
-        $data['open_close'] = YesNo::Yes;
+    protected static bool $canCreateAnother = false;
 
-        return $data;
+    protected function handleRecordCreation(array $data): Model
+    {
+        $service = new TradeService;
+
+        try {
+            return $service->openPosition($data, auth()->id());
+        } catch (ValidationException $e) {
+            throw $e;
+        }
     }
 }

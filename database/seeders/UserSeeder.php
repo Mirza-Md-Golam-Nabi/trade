@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Enums\UserRole;
@@ -18,9 +19,6 @@ class UserSeeder extends Seeder
                 ->hasAccounts(2, function (array $attributes, User $user) {
                     return ['user_id' => $user->id];
                 })
-                ->hasTradingStrategies(3, function (array $attributes, User $user) {
-                    return ['user_id' => $user->id];
-                })
                 ->create($user);
         }
     }
@@ -29,16 +27,16 @@ class UserSeeder extends Seeder
     {
         return [
             [
-                'name'  => 'User 1',
+                'name' => 'User 1',
                 'email' => 'user1@example.com',
                 'phone' => '01800000001',
-                'role'  => UserRole::User,
+                'role' => UserRole::User,
             ],
             [
-                'name'  => 'User 2',
+                'name' => 'User 2',
                 'email' => 'user2@example.com',
                 'phone' => '01800000002',
-                'role'  => UserRole::User,
+                'role' => UserRole::User,
             ],
         ];
     }

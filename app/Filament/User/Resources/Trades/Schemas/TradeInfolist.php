@@ -25,19 +25,17 @@ class TradeInfolist
                 TextEntry::make('trade_type')
                     ->badge(),
                 TextEntry::make('entry_price')
-                    // ->prefix('৳'),
-                    // ->money('BDT', locale: 'en_BD'),
-                    ->formatStateUsing(fn($state) => '৳ ' . number_format($state, 2)),
+                    ->formatStateUsing(fn ($state) => '৳ '.number_format($state, 2)),
                 TextEntry::make('lot_size')
                     ->numeric()
                     ->placeholder('-'),
                 TextEntry::make('leverage')
                     ->numeric(),
                 TextEntry::make('stop_loss')
-                    ->formatStateUsing(fn($state) => '৳ ' . number_format($state, 2))
+                    ->formatStateUsing(fn ($state) => '৳ '.number_format($state, 2))
                     ->placeholder('-'),
                 TextEntry::make('take_profit')
-                    ->formatStateUsing(fn($state) => '৳ ' . number_format($state, 2))
+                    ->formatStateUsing(fn ($state) => '৳ '.number_format($state, 2))
                     ->placeholder('-'),
                 TextEntry::make('profit_loss')
                     ->numeric()
@@ -46,7 +44,7 @@ class TradeInfolist
                     ->numeric()
                     ->placeholder('-'),
                 TextEntry::make('exit_price')
-                    ->money()
+                    ->formatStateUsing(fn ($state) => '৳ '.number_format($state, 2))
                     ->placeholder('-'),
                 TextEntry::make('notes')
                     ->placeholder('-'),

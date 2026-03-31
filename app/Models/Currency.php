@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Models;
 
 use App\Enums\CommonStatus;
-use App\Models\Account;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 

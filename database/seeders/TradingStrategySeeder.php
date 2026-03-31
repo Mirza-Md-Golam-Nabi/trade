@@ -1,20 +1,15 @@
 <?php
-namespace Database\Factories;
+namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\TradingStrategy;
+use Illuminate\Database\Seeder;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TradingStrategy>
- */
-class TradingStrategyFactory extends Factory
+class TradingStrategySeeder extends Seeder
 {
     /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
+     * Run the database seeds.
      */
-    public function definition(): array
+    public function run(): void
     {
         $names = [
             'Breakout',
@@ -38,12 +33,12 @@ class TradingStrategyFactory extends Factory
             'Enter trades near the top or bottom of a sideways market, targeting the opposite side of the range or a return to the mean.',
         ];
 
-        $index = $this->faker->numberBetween(0, count($names) - 1);
-
-        return [
-            'user_id'     => User::factory(),
-            'name'        => $names[$index],
-            'description' => $descriptions[$index],
-        ];
+        foreach ($names as $key => $name) {
+            TradingStrategy::create([
+                'user_id'     => null,
+                'name'        => $name,
+                'description' => $descriptions[$key],
+            ]);
+        }
     }
 }

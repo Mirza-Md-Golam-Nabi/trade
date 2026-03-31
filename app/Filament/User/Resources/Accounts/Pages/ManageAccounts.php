@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\User\Resources\Accounts\Pages;
 
 use App\Filament\User\Resources\Accounts\AccountResource;

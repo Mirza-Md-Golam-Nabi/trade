@@ -3,9 +3,7 @@ namespace Database\Seeders;
 
 use App\Enums\UserRole;
 use App\Models\User;
-use Database\Seeders\CurrencySeeder;
-use Database\Seeders\TradingAssetSeeder;
-use Database\Seeders\UserSeeder;
+use Database\Seeders\TradingStrategySeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -30,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CurrencySeeder::class,
             TradingAssetSeeder::class,
+            TradingStrategySeeder::class,
             UserSeeder::class,
         ]);
     }

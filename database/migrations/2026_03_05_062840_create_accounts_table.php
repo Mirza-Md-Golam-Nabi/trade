@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->unsignedTinyInteger('market_type')->default(MarketType::Stock)->index();
             $table->decimal('balance', 15, 2)->default(0);
-            $table->decimal('trade_fee', 15, 2)->default(0);
+            $table->decimal('trade_fee', 8, 2)->default(0);
             $table->unsignedTinyInteger('currency_id')->index();
             $table->string('notes', 255)->nullable();
             $table->unsignedTinyInteger('status')->default(CommonStatus::Active);

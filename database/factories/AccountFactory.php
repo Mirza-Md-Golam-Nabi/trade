@@ -23,7 +23,7 @@ class AccountFactory extends Factory
             'name' => fake()->word(2, true),
             'market_type' => fake()->randomElement(MarketType::cases()),
             'balance' => rand(1, 10) * 10000,
-            'trade_fee' => rand(1, 9) * 10,
+            'trade_fee' => rand(0, 3),
             'currency_id' => 1,
             'notes' => fake()->sentence(),
             'status' => fake()->randomElement(CommonStatus::cases()),

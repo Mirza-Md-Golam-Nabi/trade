@@ -34,6 +34,7 @@ return new class extends Migration
             $table->decimal('trade_fee', 15, 4)->nullable()->default(0);
             $table->decimal('profit_loss', 15, 4)->nullable();
             $table->decimal('risk_percent', 15, 4)->nullable();
+            $table->decimal('capital_usage', 15, 4)->nullable();
             $table->decimal('exit_price', 15, 4)->nullable();
             $table->string('notes')->nullable();
             $table->string('status')->default(TradeStatus::Open);

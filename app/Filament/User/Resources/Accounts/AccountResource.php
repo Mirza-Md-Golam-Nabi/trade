@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\User\Resources\Accounts;
 
 use App\Enums\CommonStatus;
@@ -58,10 +59,11 @@ class AccountResource extends Resource
                     ->numeric()
                     ->placeholder(0.0),
                 TextInput::make('trade_fee')
-                    ->label('Trade Fee')
+                    ->label('Trade Fee (%)')
                     ->required()
                     ->numeric()
-                    ->placeholder(0.0),
+                    ->placeholder(0.0)
+                    ->helperText('Fee as a percentage. e.g. 0.1 = 0.1%'),
                 Select::make('currency_id')
                     ->label('Currency')
                     ->relationship('currency', 'name')
@@ -80,7 +82,7 @@ class AccountResource extends Resource
     {
         return $table
             ->recordAction(null)
-            ->modifyQueryUsing(fn(Builder $query) => $query->where('user_id', auth()->id()))
+            ->modifyQueryUsing(fn (Builder $query) => $query->where('user_id', auth()->id()))
             ->recordTitleAttribute('name')
             ->columns([
                 TextColumn::make('name')

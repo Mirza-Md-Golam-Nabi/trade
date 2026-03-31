@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\User\Resources\TradingAssets;
 
 use App\Enums\MarketType;
@@ -51,8 +52,9 @@ class TradingAssetResource extends Resource
         return $table
             ->recordAction(null)
             ->modifyQueryUsing(
-                fn(Builder $query) => $query
+                fn (Builder $query) => $query
                     ->where('user_id', auth()->id())
+                    ->orWhereNull('user_id')
                     ->orderBy('market_type', 'asc')
                     ->orderBy('symbol', 'asc')
             )
