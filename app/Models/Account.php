@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use App\Enums\CommonStatus;
@@ -6,6 +7,7 @@ use App\Enums\MarketType;
 use App\Models\Currency;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Account extends Model
@@ -29,7 +31,7 @@ class Account extends Model
     {
         return [
             'market_type' => MarketType::class,
-            'status'      => CommonStatus::class,
+            'status' => CommonStatus::class,
         ];
     }
 
@@ -41,5 +43,15 @@ class Account extends Model
     public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class);
+    }
+
+    public function trades(): HasMany
+    {
+        return $this->hasMany(Trade::class);
+    }
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(AccountTransaction::class);
     }
 }

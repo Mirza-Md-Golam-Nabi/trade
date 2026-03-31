@@ -1,6 +1,7 @@
 <?php
 namespace App\Enums;
 
+use App\Enums\Direction;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
@@ -21,6 +22,14 @@ enum TradeType: string implements HasLabel, HasColor {
         return match ($this) {
             self::Buy  => 'success',
             self::Sell => 'primary',
+        };
+    }
+
+    public function defaultDirection(): Direction
+    {
+        return match ($this) {
+            self::Buy  => Direction::Long,
+            self::Sell => Direction::Short,
         };
     }
 }

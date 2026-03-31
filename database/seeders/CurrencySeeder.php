@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Enums\CommonStatus;
@@ -23,54 +24,54 @@ class CurrencySeeder extends Seeder
     {
         return [
             [
-                'name'   => 'Bangladeshi Taka',
-                'code'   => 'BDT',
+                'name' => 'Bangladeshi Taka',
+                'code' => 'BDT',
                 'symbol' => '৳',
                 'status' => CommonStatus::Active,
             ],
             [
-                'name'   => 'US Dollar',
-                'code'   => 'USD',
+                'name' => 'US Dollar',
+                'code' => 'USD',
                 'symbol' => '$',
                 'status' => CommonStatus::Inactive],
             [
-                'name'   => 'Euro',
-                'code'   => 'EUR',
+                'name' => 'Euro',
+                'code' => 'EUR',
                 'symbol' => '€',
                 'status' => CommonStatus::Inactive],
             [
-                'name'   => 'British Pound',
-                'code'   => 'GBP',
+                'name' => 'British Pound',
+                'code' => 'GBP',
                 'symbol' => '£',
                 'status' => CommonStatus::Inactive],
             [
-                'name'   => 'Japanese Yen',
-                'code'   => 'JPY',
+                'name' => 'Japanese Yen',
+                'code' => 'JPY',
                 'symbol' => '¥',
                 'status' => CommonStatus::Inactive],
             [
-                'name'   => 'Swiss Franc',
-                'code'   => 'CHF',
+                'name' => 'Swiss Franc',
+                'code' => 'CHF',
                 'symbol' => 'CHF',
                 'status' => CommonStatus::Inactive],
             [
-                'name'   => 'Canadian Dollar',
-                'code'   => 'CAD',
+                'name' => 'Canadian Dollar',
+                'code' => 'CAD',
                 'symbol' => 'C$',
                 'status' => CommonStatus::Inactive],
             [
-                'name'   => 'Australian Dollar',
-                'code'   => 'AUD',
+                'name' => 'Australian Dollar',
+                'code' => 'AUD',
                 'symbol' => 'A$',
                 'status' => CommonStatus::Inactive],
             [
-                'name'   => 'Indian Rupee',
-                'code'   => 'INR',
+                'name' => 'Indian Rupee',
+                'code' => 'INR',
                 'symbol' => '₹',
                 'status' => CommonStatus::Inactive],
             [
-                'name'   => 'Chinese Yuan',
-                'code'   => 'CNY',
+                'name' => 'Chinese Yuan',
+                'code' => 'CNY',
                 'symbol' => '¥',
                 'status' => CommonStatus::Inactive,
             ],
